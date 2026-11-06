@@ -1,0 +1,179 @@
+{
+ "items": {
+  "bike": {
+   "name": "Bike (MTB)",
+   "short": "Bike",
+   "calc": {
+    "3h": 15,
+    "1d": 22,
+    "2d": 34,
+    "3d": 45,
+    "4d": 13
+   },
+   "official": {
+    "3h": 15,
+    "1d": 22,
+    "2d": 34,
+    "3d": 45,
+    "4d": 13
+   },
+   "delivery": true
+  },
+  "ebike": {
+   "name": "E-bike",
+   "short": "E-bike",
+   "calc": {
+    "3h": 33,
+    "1d": 39,
+    "2d": 68,
+    "3d": 90,
+    "4d": 28
+   },
+   "official": {
+    "3h": 33,
+    "1d": 39,
+    "2d": 68,
+    "3d": 90,
+    "4d": 28
+   },
+   "delivery": true
+  },
+  "escooter": {
+   "name": "E-scooter",
+   "short": "E-scooter",
+   "calc": {
+    "30m": 11,
+    "1h": 15,
+    "3h": 27,
+    "1d": 34,
+    "2d": 60,
+    "3d": 81,
+    "4d": 25
+   },
+   "official": {
+    "30m": 11,
+    "1h": 15,
+    "3h": 27,
+    "1d": 34,
+    "2d": 60,
+    "3d": 81,
+    "4d": 25
+   },
+   "delivery": true
+  },
+  "kids": {
+   "name": "Kids' bike",
+   "short": "Kids' bike",
+   "calc": {
+    "3h": 7,
+    "1d": 10,
+    "2d": 17,
+    "3d": 22.5,
+    "4d": 6.5
+   },
+   "official": {
+    "3h": 7,
+    "1d": 10
+   },
+   "note": "Longer rentals: 50% of the regular bike price.",
+   "delivery": true
+  },
+  "sup": {
+   "name": "SUP board",
+   "short": "SUP",
+   "calc": {
+    "1h": 15,
+    "2h": 20,
+    "1d": 29,
+    "2d": 50,
+    "3d": 66,
+    "4d": 22
+   },
+   "official": {
+    "1h": 15,
+    "2h": 20,
+    "1d": 29,
+    "2d": 50,
+    "4d": 22
+   },
+   "note": "Camp Arena Stoja only.",
+   "only": "stoja",
+   "delivery": false
+  },
+  "kayak": {
+   "name": "Kayak",
+   "short": "Kayak",
+   "calc": {
+    "1h": 15,
+    "2h": 20,
+    "1d": 29,
+    "2d": 50,
+    "3d": 66,
+    "4d": 22
+   },
+   "official": {
+    "1h": 15,
+    "2h": 20,
+    "1d": 29,
+    "2d": 50,
+    "3d": 66
+   },
+   "note": "Camp Arena Stoja only.",
+   "only": "stoja",
+   "delivery": false
+  }
+ },
+ "extras": [
+  {
+   "id": "childseat",
+   "name": "Child seat",
+   "price": 4
+  },
+  {
+   "id": "backpack",
+   "name": "Backpack",
+   "price": 3
+  },
+  {
+   "id": "light",
+   "name": "Bike light",
+   "price": 2
+  },
+  {
+   "id": "phone",
+   "name": "Phone holder",
+   "price": 1
+  },
+  {
+   "id": "helmet",
+   "name": "Helmet, rented separately",
+   "price": 4
+  }
+ ],
+ "tours": [
+  {
+   "id": "kamenjak",
+   "name": "Kamenjak e-bike tour",
+   "img": "tour-kamenjak",
+   "desc": "E-bike tour to Cape Kamenjak. Ride 4 km to Cave Romanae, the ancient Roman quarry that supplied stone for the Pula Arena, then 15 km along the coast to Cape Kamenjak and Školjić beach for a break and a swim."
+  },
+  {
+   "id": "sijana",
+   "name": "Šijana Green Escape",
+   "img": "tour-sijana",
+   "desc": "A relaxed guided ride from Verudela to the shady Šijana forest, Pula's green oasis. Quiet paths away from traffic, the Park of Labyrinths and a drink break at a forest café. Classic bike or electric mountain bike."
+  },
+  {
+   "id": "sunrise",
+   "name": "Sunrise bike tour",
+   "img": "tour-sunrise",
+   "desc": "An early morning guided ride along the coast while it is still cool and quiet. Morning tours also run from Camp Arena Medulin."
+  },
+  {
+   "id": "sunset",
+   "name": "Sunset bike tour",
+   "img": "tour-sunset",
+   "desc": "A relaxing ride along Pula's coastline at sunset. Scenic paths, local landmarks and the best viewpoints for photos in the golden evening light."
+  }
+ ]
+}
