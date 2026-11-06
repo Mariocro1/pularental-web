@@ -219,23 +219,12 @@
     window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(message()), '_blank', 'noopener');
   });
   $('sendEm').addEventListener('click', function () {
-    if (!check(true)) return;
-    var btn = this; btn.disabled = true; btn.textContent = 'Sending…';
-    var data = { _subject: (S.mode === 'rent' ? 'Booking request ' : 'Tour request ') + (S.start ? dstr(S.start) : '') + ' – ' + $('nm').value.trim(),
-                 _template: 'box', _captcha: 'false', name: $('nm').value.trim(), email: $('em').value.trim(), phone: $('ph').value.trim(), request: message() };
-    if ($('em').value.trim()) data._replyto = $('em').value.trim();
-    fetch('https://formsubmit.co/ajax/' + MAIL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
-      .then(function (r) { return r.json(); })
-      .then(function (j) {
-        if (String(j.success) !== 'true') throw new Error(j.message || 'error');
-        track('email');
-        $('ok').hidden = false; $('ok').textContent = 'Thank you! Your request has been sent. We will reply with availability as soon as possible.';
-        btn.textContent = 'Request sent';
-      })
-      .catch(function () {
-        btn.disabled = false; btn.textContent = 'Send request by e-mail';
-        $('err').innerHTML = 'Sending failed. Please use WhatsApp or write to <a href="mailto:' + MAIL + '">' + MAIL + '</a>.';
-      });
+    if (!check(false)) return;
+    track('email');
+    var subj = (S.mode === 'rent' ? 'Booking request ' : 'Tour request ') + (S.start ? dstr(S.start) : '') + ' – ' + $('nm').value.trim();
+    location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(message());
+    $('ok').hidden = false;
+    $('ok').innerHTML = 'Your e-mail app should open with the request ready – just press Send. If nothing opens, write to <a href="mailto:' + MAIL + '">' + MAIL + '</a> or use WhatsApp.';
   });
 
   var mb = document.querySelector('.mbar');

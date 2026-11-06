@@ -431,8 +431,8 @@ write('/blog-list', page('/blog-list', 'Cycling Istria – Bike Routes & Tips | 
 # ---------- PRIVATNOST ----------
 priv = f'''
 <section class="page-h"><div class="wrap narrow"><h1>Privacy</h1>
-<p>When you send a booking request by e-mail from this website, we receive your name, contact details, chosen dates, equipment and message. We use them only to answer your request and arrange the rental, and we do not pass them on for marketing.</p>
-<p>E-mail requests are delivered through the FormSubmit service (formsubmit.co). Requests sent via WhatsApp are handled by WhatsApp under its own terms.</p>
+<p>When you send us a booking request, we receive your name, contact details, chosen dates, equipment and message. We use them only to answer your request and arrange the rental, and we do not pass them on for marketing.</p>
+<p>Requests are sent from your own e-mail app or WhatsApp; this website does not store them. WhatsApp handles messages under its own terms.</p>
 <p>This website uses Google Ads measurement (Google tag) to see how visitors find us.</p>
 <p>To ask about or delete your data, write to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
 <p class="muted">MD Segway, Pula, Croatia</p></div></section>
