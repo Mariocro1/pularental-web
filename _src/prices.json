@@ -86,7 +86,6 @@
     "2h": 20,
     "1d": 29,
     "2d": 50,
-    "3d": 66,
     "4d": 22
    },
    "official": {
@@ -108,8 +107,7 @@
     "2h": 20,
     "1d": 29,
     "2d": 50,
-    "3d": 66,
-    "4d": 22
+    "3d": 66
    },
    "official": {
     "1h": 15,
@@ -127,27 +125,32 @@
   {
    "id": "childseat",
    "name": "Child seat",
-   "price": 4
+   "price": 4,
+   "multiFree": false
   },
   {
    "id": "backpack",
    "name": "Backpack",
-   "price": 3
+   "price": 3,
+   "multiFree": true
   },
   {
    "id": "light",
    "name": "Bike light",
-   "price": 2
+   "price": 2,
+   "multiFree": true
   },
   {
    "id": "phone",
    "name": "Phone holder",
-   "price": 1
+   "price": 1,
+   "multiFree": true
   },
   {
    "id": "helmet",
    "name": "Helmet, rented separately",
-   "price": 4
+   "price": 4,
+   "multiFree": true
   }
  ],
  "tours": [

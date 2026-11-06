@@ -156,7 +156,7 @@ FAQ = [
     ('Do I need to leave a deposit?', 'No deposit is required. You only need to show a valid photo ID (identity card, passport or driver\'s licence) when you pick up your rental.'),
     ('Can I rent an e-bike or e-scooter?', 'Yes, e-bikes and e-scooters are available at all three locations. E-bikes are perfect for longer rides to Cape Kamenjak or along the Medulin coast.'),
     ('Do you rent SUP boards and kayaks?', 'Yes, SUP boards and kayaks are available at Camp Arena Stoja in Pula.'),
-    ('Can children rent bikes?', 'Yes. Children\'s bikes are 50% of the regular price, and child seats are available for 4 €.'),
+    ('Can children rent bikes?', 'Yes. Children\'s bikes are 50% of the regular price. Child seats cost 4 € per day.'),
     ('Do you deliver?', 'Delivery is free for bike and e-scooter rentals of 2 or more days, or for bookings of 4 or more vehicles. Mention your accommodation in the request.'),
     ('Do I need to book in advance?', 'Walk-ins are welcome, but in July and August we recommend sending a request in advance so we can keep the equipment for you.'),
     ('What are your opening hours?', 'We are open every day from 9 AM to 9 PM at all locations.'),
@@ -238,7 +238,7 @@ home = f'''
     <div class="cards3">{home_cards}</div>
     <div class="sub-row">
       <div class="mini"><h3>SUP &amp; kayak</h3><p>At Camp Arena Stoja. From {euro(ITEMS['sup']['official']['1h'])} per hour.</p><a class="link" href="/book-now?i=sup">Check price →</a></div>
-      <div class="mini"><h3>Kids' bikes</h3><p>50% of the regular price. Child seats 4 €.</p><a class="link" href="/book-now?i=kids">Check price →</a></div>
+      <div class="mini"><h3>Kids' bikes</h3><p>50% of the regular price. Child seats 4 € per day.</p><a class="link" href="/book-now?i=kids">Check price →</a></div>
       <div class="mini"><h3>Full price list</h3><p>All rentals and accessories in one place.</p><a class="link" href="/prices">See prices →</a></div>
     </div>
   </div>
@@ -297,7 +297,7 @@ acc = ''.join(f'<tr><td>{a["name"]}</td><td>{euro(a["price"])}</td></tr>' for a 
 prices = f'''
 <section class="page-h"><div class="wrap"><h1>Price list</h1><p class="lead">All prices in euro, the same at all three locations. Helmet and lock included with every rental. You pay on arrival.</p>{cta_row()}</div></section>
 <section><div class="wrap"><div class="pgrid">{blocks}
-<div class="pblock"><h2>Accessories</h2><table class="pt"><tbody>{acc}</tbody></table></div>
+<div class="pblock"><h2>Accessories</h2><p class="muted">Price per day. For rentals of 2 or more days all accessories are free, except the child seat.</p><table class="pt"><tbody>{acc}</tbody></table></div>
 </div>
 <p class="muted">Free delivery for bike and e-scooter rentals of 2 or more days, or for bookings of 4 or more vehicles.</p></div></section>
 '''

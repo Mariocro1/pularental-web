@@ -33,8 +33,8 @@
     }
     if (n === 2 && c['2d'] != null) return { p: c['2d'], t: '2 days' };
     if (n === 3 && c['3d'] != null) return { p: c['3d'], t: '3 days' };
-    if (c['4d'] != null) return { p: c['4d'] * n, t: n + ' days' };
-    return { p: c['1d'] * n, t: n + ' days' };
+    if (n >= 4 && c['4d'] != null) return { p: c['4d'] * n, t: n + ' days' };
+    return { p: null, t: n + ' days – price on request' };
   }
 
   // ---------- kalendar ----------
@@ -88,7 +88,7 @@
       var sub = (c['3h'] != null ? '3 h ' + eur(c['3h']) + ' · ' : (c['1h'] != null ? '1 h ' + eur(c['1h']) + ' · ' : '')) + from + (it.only ? ' · Camp Stoja only' : '');
       return row(k, it.name, sub, S.qty[k], 'i');
     }).join('');
-    $('extras').innerHTML = P.extras.map(function (e) { return row(e.id, e.name, eur(e.price) + ' per rental', S.ex[e.id], 'x'); }).join('');
+    $('extras').innerHTML = P.extras.map(function (e) { return row(e.id, e.name, eur(e.price) + ' per day' + (e.multiFree ? ' · free for 2+ days' : ''), S.ex[e.id], 'x'); }).join('');
     ORDER.forEach(function (k) {
       var r = document.querySelector('.row[data-k="' + k + '"]');
       var off = ITEMS[k].only && ITEMS[k].only !== loc;
@@ -140,27 +140,31 @@
     var n = days(), body = '';
     $('durBox').hidden = !(S.mode === 'rent' && single());
     if (S.mode === 'rent') {
-      var vehicles = 0, longDel = false;
+      var vehicles = 0, longDel = false, onReq = false;
       ORDER.forEach(function (k) {
         if (!S.qty[k]) return;
         var pr = itemPrice(k);
         if (!pr) return;
-        var sum = pr.p * S.qty[k]; total += sum;
         if (ITEMS[k].delivery) vehicles += S.qty[k];
         if (ITEMS[k].delivery && n >= 2) longDel = true;
+        if (pr.p == null) { onReq = true; lines.push(S.qty[k] + '× ' + ITEMS[k].name + ' – ' + pr.t); return; }
+        var sum = pr.p * S.qty[k]; total += sum;
         lines.push(S.qty[k] + '× ' + ITEMS[k].name + ' – ' + pr.t + ' = ' + eur(sum));
       });
       P.extras.forEach(function (e) {
         if (!S.ex[e.id]) return;
-        var sum = e.price * S.ex[e.id]; total += sum;
-        lines.push(S.ex[e.id] + '× ' + e.name + ' = ' + eur(sum));
+        var multi = n >= 2 && !single();
+        if (multi && e.multiFree) { lines.push(S.ex[e.id] + '× ' + e.name + ' – free for ' + n + ' days'); return; }
+        var dd = multi ? n : 1, sum = e.price * S.ex[e.id] * dd; total += sum;
+        lines.push(S.ex[e.id] + '× ' + e.name + (multi ? ' – ' + n + ' days' : '') + ' = ' + eur(sum));
       });
       var when = S.start ? (single() ? dstr(S.start) + ' · ' + LBL[$('dur').value] : dstr(S.start) + ' – ' + dstr(S.end) + ' · ' + n + ' days') : 'No dates selected';
       body = '<p class="when">' + when + '</p>';
       body += lines.length ? '<ul>' + lines.map(function (l) { return '<li>' + l + '</li>'; }).join('') + '</ul>' : '<p class="muted">' + (S.start ? 'Add equipment with the + buttons.' : 'Select dates in the calendar.') + '</p>';
       if (lines.length && (longDel || vehicles >= 4)) body += '<p class="del">🚚 Free delivery applies to this booking.</p>';
-      $('tot').textContent = eur(total);
-      if (mb) mb.querySelector('b').textContent = eur(total);
+      var tt = eur(total) + (onReq ? ' + on request' : '');
+      $('tot').textContent = tt;
+      if (mb) mb.querySelector('b').textContent = tt;
     } else {
       if (mb) mb.querySelector('b').textContent = 'on request';
       var t = P.tours.filter(function (x) { return x.id === S.tour; })[0];
@@ -181,7 +185,7 @@
       L.push('Dates: ' + (single() ? dstr(S.start) + ' (' + LBL[$('dur').value] + ')' : dstr(S.start) + ' – ' + dstr(S.end) + ' (' + days() + ' days)'));
       L.push('Pick-up time: ' + $('time').value);
       lines.forEach(function (l) { L.push('• ' + l); });
-      L.push('Total: ' + eur(total) + ' (pay on arrival)');
+      L.push('Total: ' + $('tot').textContent + ' (pay on arrival)');
     } else {
       var t = P.tours.filter(function (x) { return x.id === S.tour; })[0];
       L.push('Tour: ' + t.name + ($('tourE').checked ? ' (e-bikes)' : ''));
